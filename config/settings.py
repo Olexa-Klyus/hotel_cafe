@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'main_page.apps.MainPageConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# прописуємо місце зберігання медіа файлів
+# os має доступ до операційної системи на сервері,
+# шлях до папки на сервері буде в BASE_DIR, до шляху додаємо папку media, де будуть наші файли
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
