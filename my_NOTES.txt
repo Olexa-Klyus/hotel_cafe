@@ -1,0 +1,48 @@
+можна створити проект python, а не django
+потім доставити django restframework
+бібліотеки для пайтон на сайті pypi
+
+під кожний проект своє віртуальне оточення venv, там буде ізольований пайтон для проекту і бібліотеки до нього
+python -m venv venv - тобто створити віртуальне оточення в папці venv
+
+внизу справа вибираємо інтерпретатор - python, що знаходиться в папці venv нашого проекту
+
+команда pip freeze виведе список всіх модулів, які встановлені в проекті
+
+pip install djangorestframework - встановлюємо бібліотеки для django
+
+django-admin startproject config . - створюється новий проект django з назвою config прямо в головній папці (бо є крапка)
+
+для підказок в settings потрібно зайти setings-langwige and framework-вибрати django  і вказати де знаходиться setings
+
+и setings потрібно прописати настройки по базі даних, яка буде використовуватися,
+наприклад
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hotel_cafe_db',
+        'USER': 'olexa',
+        'PASSWORD': 'leon',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}
+
+якщо база даних не створена, створюємо її через вкладку database,+(new) mysql вводимо назву, user, password
+потім в database console прописуємо create database hotel_cafe_db
+щоб база створилася і підключилвся, потрібно перед тим встановити
+на комп mysql server відео - https://www.youtube.com/watch?v=BD1PnBDhP0o
+при встановленні mysql server вказав user - olexa, passwod - leon,
+тому створенні підключення localhost в Database теж потрібно вказати olexa leon, аналогічно в описі DATABASES =, що вище
+
+для баз mysql потрібно істалювати mysqlclient - команда pip install mysqlclient
+
+__init__.py порожній, наявність його в папці означає, що папку пайтон буде сприймати папку як пакедж,
+і до файлів у ній можна буде звернутися через крапку, наприклад configs.urls
+
+manage.py- в ньому знахоодиться точка входу в проект,
+за командою будемо додавати нові APP в проект
+
+запуск проекту - python manage.py runserver
+також в TOOLS є manage.py task, в якому просто вводимо команду - без прописування python manage.py
