@@ -57,3 +57,9 @@ pip install pillow
 після того як моделі готові, робимо міграцію
 python manage.py makemigration
 python manage.py migrate
+
+щоб сервер запустився (без логінації) потрібно createsuperuser,  внести user email password
+
+далі імпортуємо у views.py наші моделі, щоб у views можна було отримувати інфу з бази даних
+імпортуємо HttpResponse
+і формуємо віповідь на запит

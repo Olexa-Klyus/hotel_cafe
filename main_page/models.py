@@ -17,9 +17,13 @@ class Category(models.Model):
     class Meta:
         ordering = ('position',)
 
+    def __iter__(self):
+        for item in self.dishes.all():
+            yield item
+
+
 
 class Dish(models.Model):
-
     # можна формувати за допогою модуля uuid нове коректне унікальне імя файла,
     # зберігаючи поточне розширення файлу
     # def get_file_name(self, file_name: str):
@@ -41,7 +45,8 @@ class Dish(models.Model):
     # або результат виконання функції, визначеної вище, яка буде формувати імя файла і яка повертає стрічку -
     # photo = models.ImageField(upload_to=get_file_name, blank=True)
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    # якщо у форенкей додати related_name, то через нього можна доступитися до підпорядкованої таблиці
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='dishes')
     is_special = models.BooleanField(default=False)
 
     def __str__(self):

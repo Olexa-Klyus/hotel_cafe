@@ -18,9 +18,12 @@ from django.urls import path
 
 from django.conf import settings
 from django.conf.urls.static import static
+from main_page.views import main
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main),
+
 ]
 
 # # прописуємо ці налаштування щоб на локальному сервері в режимі розробника бачити зображення з медіа
